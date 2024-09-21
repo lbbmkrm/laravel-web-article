@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BlogController;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\User;
@@ -25,55 +26,16 @@ Route::get('/about', function () {
         'urlName' => 'About'
     ]);
 });
-Route::get('/blog', function () {
-    return view('blog', [
-        'web' => [
-            'tittle' => 'Welcome to Blogs',
-            'content' => 'Halaman Blogs',
-            'urlName' => 'Blogs'
-        ],
-        'posts' => Post::all()
-    ]);
-});
-Route::get('/blog/{slug}', function ($slug) {
-    $post = Post::where('slug', $slug)->first();
 
-    if (!$post) {
-        abort(404); // Mengembalikan 404 jika post tidak ditemukan
-    }
 
-    return view('post', [
-        'web' => [
-            'tittle' => 'Welcome to Blog',
-            'content' => 'Halaman Blog',
-            'urlName' => 'Blog'
-        ],
-        'post' => $post
-    ]);
+Route::controller(BlogController::class)->group(function () {
+    Route::get('/blog',  'blog');
+    Route::get('/blog/{slug}',  'showPost');
+    Route::get("/category/{category:name}",  'category');
+    Route::get('/author/{user:username}',  'author');
 });
 
-Route::get("/category/{category:name}", function (Category $category) {
-    return view("blog", [
 
-        'web' => [
-            'tittle' => "Articles in $category->name",
-            'content' => 'Halaman Blog',
-            'urlName' => 'Categories'
-        ],
-        'posts' => $category->posts
-    ]);
-});
-
-Route::get('/author/{user:username}', function (User $user) {
-    return view('blog', [
-        'web' => [
-            'tittle' => 'Articles by ' . $user->name,
-            'content' => 'Halaman Blog',
-            'urlName' => 'Author'
-        ],
-        'posts' => $user->posts
-    ]);
-});
 
 
 Route::get('/contact', function () {
