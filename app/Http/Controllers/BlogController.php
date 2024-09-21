@@ -13,9 +13,9 @@ class BlogController extends Controller
     {
         return view('blog', [
             'web' => [
-                'tittle' => 'Welcome to Blogs',
-                'content' => 'Halaman Blogs',
-                'urlName' => 'Blogs'
+                'tittle' => 'Find Your Article',
+                'content' => 'Halaman Articles',
+                'urlName' => 'Home'
             ],
             'posts' => Post::all()
         ]);
@@ -28,9 +28,9 @@ class BlogController extends Controller
             'web' => [
                 'tittle' => 'Welcome to Blog',
                 'content' => 'Halaman Blog',
-                'urlName' => 'Blog'
+                'urlName' => 'Article'
             ],
-            'posts' => $post
+            'post' => $post
         ]);
     }
 
