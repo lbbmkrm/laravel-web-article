@@ -36,6 +36,9 @@
     @endforeach
   </div>
 </div>
+<div class="mb-12 p-4">
+  {{ $posts->links() }}
+</div>
 </main>
 </body>
 </html>

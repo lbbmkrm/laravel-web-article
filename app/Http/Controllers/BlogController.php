@@ -17,7 +17,7 @@ class BlogController extends Controller
                 'content' => 'Halaman Articles',
                 'urlName' => 'Home'
             ],
-            'posts' => Post::all()
+            'posts' => Post::simplePaginate(9)
         ]);
     }
 
