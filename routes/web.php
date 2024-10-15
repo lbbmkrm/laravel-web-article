@@ -12,8 +12,9 @@ use Illuminate\Support\Facades\Route;
 Route::controller(BlogController::class)->group(function () {
     Route::get('/',  'blog');
     Route::get('/article/{slug}',  'showPost');
-    Route::get("/category/{category:name}",  'category');
-    Route::get('/author/{user:username}',  'author');
+    Route::get("/category/{category:name}",  'category')->name('blog.category');
+    Route::get('/author/{user:username}',  'author')->name('blog.author');
+    Route::get('/search', 'blog')->name('search');
 });
 
 Route::get('/about', function () {

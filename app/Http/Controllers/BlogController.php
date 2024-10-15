@@ -9,15 +9,22 @@ use Illuminate\Http\Request;
 
 class BlogController extends Controller
 {
-    public function blog()
+    public function blog(Request $request)
     {
+        $query = Post::query();
+
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $query->where('title', 'like', '%' . $search . '%');
+        }
+
         return view('blog', [
             'web' => [
                 'tittle' => 'Find Your Article',
                 'content' => 'Halaman Articles',
                 'urlName' => 'Home'
             ],
-            'posts' => Post::simplePaginate(9)
+            'posts' => $query->filter()->latest()->simplePaginate(9)
         ]);
     }
 
