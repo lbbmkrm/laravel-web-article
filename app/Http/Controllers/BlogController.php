@@ -36,13 +36,14 @@ class BlogController extends Controller
 
     public function category(Category $category)
     {
+
         return view('blog', [
             'web' => [
                 'tittle' => "Articles in $category->name",
                 'content' => 'Halaman Blog',
                 'urlName' => 'Categories'
             ],
-            'posts' => $category->posts
+            'posts' => $category->posts()->simplePaginate(6)
         ]);
     }
 
@@ -54,7 +55,7 @@ class BlogController extends Controller
                 'content' => 'Halaman Blog',
                 'urlName' => 'Author'
             ],
-            'posts' => $user->posts
+            'posts' => $user->posts()->simplePaginate(6)
         ]);
     }
 }

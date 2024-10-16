@@ -10,7 +10,8 @@
       <article class="p-6 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
         <div class="flex justify-between items-center mb-5 text-gray-500">
           <span class="bg-primary-100 text-primary-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-primary-200 dark:text-primary-800">
-            <a href="/category/{{ $post->category->name }}">{{ $post->category->name }}</a>
+            <a href="{{ url('/category/' . $post->category->name) }}">{{ $post->category->name }}</a>
+
           </span>
           <span class="text-sm">{{ $post->created_at->diffForHumans() }}</span>
         </div>
@@ -21,7 +22,8 @@
         <div class="flex justify-between items-center">
           <div class="flex items-center space-x-4">
             <img class="w-7 h-7 rounded-full" src="{{ asset('img/user.png') }}" alt="Bonnie Green avatar" />
-            <a href="/author/{{ $post->user->username }}">
+           <a href="{{ url('/author/' . $post->user->username) }}">
+
               <span class="font-medium dark:text-white">{{ $post->user->name }}</span>
             </a>
           </div>
