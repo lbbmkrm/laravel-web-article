@@ -9,15 +9,18 @@ use Illuminate\Http\Request;
 
 class BlogController extends Controller
 {
-    public function blog()
+    public function blog(Request $request)
     {
+        // Ambil data dengan filter pencarian
+        $blog = Post::filter($request->only('search'))->latest();
+
         return view('blog', [
             'web' => [
                 'tittle' => 'Find Your Article',
                 'content' => 'Halaman Articles',
                 'urlName' => 'Home'
             ],
-            'posts' => Post::simplePaginate(9)
+            'posts' => $blog->simplePaginate() // Menggunakan variabel $blog
         ]);
     }
 
