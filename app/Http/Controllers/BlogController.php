@@ -11,12 +11,8 @@ class BlogController extends Controller
 {
     public function blog(Request $request)
     {
-        $query = Post::query();
-
-        if ($request->has('search')) {
-            $search = $request->input('search');
-            $query->where('title', 'like', '%' . $search . '%');
-        }
+        // Ambil data dengan filter pencarian
+        $blog = Post::filter($request->only('search'))->latest();
 
         return view('blog', [
             'web' => [
@@ -24,7 +20,7 @@ class BlogController extends Controller
                 'content' => 'Halaman Articles',
                 'urlName' => 'Home'
             ],
-            'posts' => $query->filter()->latest()->simplePaginate(9)
+            'posts' => $blog->simplePaginate() // Menggunakan variabel $blog
         ]);
     }
 
