@@ -28,7 +28,8 @@ Route::get('/about', function () {
 
 Route::controller(UserController::class)->group(function () {
     Route::get('/authors', 'index')->name('author.index');
-    Route::get('/author/register', 'save')->name('author.save');
+    Route::get('/authors/register', 'register')->name('author.save');
+    Route::post('/authors', 'store')->name('author.register');
 });
 
 Route::get('/write', [WriteController::class, 'index']);

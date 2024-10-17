@@ -40,6 +40,11 @@
   </nav>
 
   <main class="mt-8 px-4 py-2 mx-auto max-w-screen-xl md:w-[65%] lg:pb-12 lg:pt-4 lg:px-0">
+    @if (session('success'))
+      <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
+        <span class="font-medium">Success registration!</span>
+      </div>
+    @endif
     <ul role="list" class="divide-y divide-gray-100">
       @foreach ($users as $author)
         <li class="flex justify-between gap-x-6 py-5">
