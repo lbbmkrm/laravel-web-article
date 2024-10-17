@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
         $categories = Category::all();
         $users = User::all();
 
-        Post::factory(100)
+        Post::factory(20)
             ->recycle([$categories, $users])
             ->create();
     }

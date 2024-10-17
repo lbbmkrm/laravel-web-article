@@ -41,7 +41,7 @@
 
   <main class="mt-8 px-4 py-2 mx-auto max-w-screen-xl md:w-[65%] lg:pb-12 lg:pt-4 lg:px-0">
     @if (session('success'))
-      <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
+      <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-100 dark:bg-gray-800 dark:text-green-400" role="alert">
         <span class="font-medium">Success registration!</span>
       </div>
     @endif
@@ -49,10 +49,12 @@
       @foreach ($users as $author)
         <li class="flex justify-between gap-x-6 py-5">
           <div class="flex min-w-0 gap-x-4">
+            <a href="{{ route('blog.author', $author->username) }}" class="hover:bg-white">
             <img class="h-12 w-12 flex-none rounded-full bg-gray-50" src="{{ asset("img/user.png") }}" alt="author">
             <div class="min-w-0 flex-auto">
             <p class="text-sm font-semibold leading-6 text-gray-900">{{ $author->name }}</p>
             <p class="mt-1 truncate text-xs leading-5 text-gray-500">{{ $author->email }}</p>
+            </a>
           </div>
         </div>
         <div class="shrink-0 sm:flex sm:flex-col sm:items-end">
