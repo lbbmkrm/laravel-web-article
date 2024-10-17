@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\WriteController;
 use App\Models\Category;
 use App\Models\Post;
@@ -14,7 +15,7 @@ Route::controller(BlogController::class)->group(function () {
     Route::get('/',  'blog')->name('blog.index');
     Route::get('/article/{slug}',  'showPost');
     Route::get("/category/{category:name}",  'category');
-    Route::get('/author/{user:username}',  'author');
+    Route::get('/author/{user:username}',  'author')->name('blog.author');
 });
 
 Route::get('/about', function () {
@@ -25,12 +26,10 @@ Route::get('/about', function () {
     ]);
 });
 
-Route::get('/contact', function () {
-    return view('contact', [
-        'tittle' => 'Welcome to Contact',
-        'content' => 'Halaman Contact',
-        'urlName' => 'Contact'
-    ]);
+Route::controller(UserController::class)->group(function () {
+    Route::get('/authors', 'index')->name('author.index');
+    Route::get('/author/register', 'save')->name('author.save');
 });
+
 Route::get('/write', [WriteController::class, 'index']);
 Route::post('/', [WriteController::class, 'store'])->name('blog.write');

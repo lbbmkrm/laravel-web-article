@@ -21,10 +21,10 @@
         <p class="mb-5 font-light text-gray-500 dark:text-gray-400">{{ Str::limit($post['body'], 100) }}</p>
         <div class="flex justify-between items-center">
           <div class="flex items-center space-x-4">
-            <img class="w-7 h-7 rounded-full" src="{{ asset('img/user.png') }}" alt="Bonnie Green avatar" />
+            <img class="w-7 h-7 rounded-full" src="{{ asset('img/user.png') }}" alt="Author" />
            <a href="{{ url('/author/' . $post->user->username) }}">
 
-              <span class="font-medium dark:text-white">{{ $post->user->name }}</span>
+              <span class="font-medium dark:text-white">{{ $post->user->username }}</span>
             </a>
           </div>
           <a href="/article/{{ $post['slug'] }}" class="inline-flex items-center font-medium text-primary-600 dark:text-primary-500 hover:underline">
