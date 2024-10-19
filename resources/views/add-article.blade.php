@@ -8,7 +8,7 @@
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
       <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
         <img src="{{ asset('img/letter-a.png') }}" class="h-8" alt="Logo" />
-        <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Articles</span>
+        <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Blogs</span>
       </a>
       <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
         <button 
@@ -38,13 +38,13 @@
       </div>
     </div>
   </nav>
-  <main class="mt-8 px-4 mx-auto max-w-screen-xl lg:pb-12 lg:pt-4  lg:px-0">
+  <main class="mt-8 p-4 mx-auto max-w-screen-xl lg:pb-12 lg:pt-4  lg:px-0 lg:w-[60%]">
     <form action="{{ route('blog.write') }}" method="POST" autocomplete="off">
       @csrf
       <div class="grid gap-4 mb-4 sm:grid-cols-2">
         <div>
           <label for="title" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Title</label>
-          <input type="text" name="tittle" id="title" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type article title" required>
+          <input type="text" name="tittle" id="title" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type blog title" required>
         </div>
         <div>
           <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category</label>
@@ -56,24 +56,26 @@
           </select>
         </div>
         <div>
-          <label for="user" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">user</label>
+          <label for="user" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Author</label>
           <select name="user_name" id="user" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                 <option selected="">Select Author</option>
             @foreach ($users as $author)
                 <option value="{{ $author->name }}">{{ $author->name}}</option>
             @endforeach
           </select>
+          <p class="mt-2 text-sm text-gray-500">Or add new 
+            <a class="text-sky-500 hover:text-sky-300" href="{{ route('author.save') }}">Author</a></p>
         </div>
         <div class="sm:col-span-2">
           <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Body</label>
-          <textarea id="description" name="body" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Write article body here"></textarea>
+          <textarea id="description" name="body" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Write blog here"></textarea>
         </div>
       </div>
       <button type="submit" class="text-white inline-flex items-center bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
         <svg class="mr-1 -ml-1 w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
           <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path>
         </svg>
-        Add new article
+        Add new blog
       </button>
     </form>
   </main>

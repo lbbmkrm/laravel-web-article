@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::controller(BlogController::class)->group(function () {
     Route::get('/',  'blog')->name('blog.index');
-    Route::get('/article/{slug}',  'showPost');
+    Route::get('/blog/{slug}',  'showPost')->name('blog.full');
     Route::get("/category/{category:name}",  'category')->name('blog.category');
     Route::get('/author/{user:username}',  'author')->name('blog.author');
     Route::get('/search', 'blog')->name('search');

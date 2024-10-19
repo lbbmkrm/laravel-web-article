@@ -11,13 +11,13 @@ class BlogController extends Controller
 {
     public function blog(Request $request)
     {
-        // Ambil data dengan filter pencarian
+
         $blog = Post::filter($request->only('search'))->latest();
 
         return view('blog', [
             'web' => [
-                'tittle' => 'Find Your Article',
-                'content' => 'Halaman Articles',
+                'title' => 'Find Your Blog',
+                'content' => 'Halaman Blogs',
                 'urlName' => 'Home'
             ],
             'posts' => $blog->simplePaginate() // Menggunakan variabel $blog
@@ -31,7 +31,7 @@ class BlogController extends Controller
             'web' => [
                 'tittle' => 'Welcome to Blog',
                 'content' => 'Halaman Blog',
-                'urlName' => 'Article'
+                'urlName' => 'Blog'
             ],
             'post' => $post
         ]);
@@ -42,7 +42,7 @@ class BlogController extends Controller
 
         return view('blog', [
             'web' => [
-                'tittle' => "Articles in $category->name",
+                'tittle' => "Blog in $category->name",
                 'content' => 'Halaman Blog',
                 'urlName' => 'Categories'
             ],
