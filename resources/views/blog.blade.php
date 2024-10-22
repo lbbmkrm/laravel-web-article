@@ -20,7 +20,7 @@
 <div class="py-4 px-4 mx-auto max-w-screen-xl lg:pb-12 lg:pt-4 lg:mt-4 lg:px-0 ">
   <div class="grid gap-8">
     @foreach ($posts as $post)
-      <article class="p-6 bg-white rounded-lg border border-gray-200 shadow-md hover:scale-105 transition-all duration-700 dark:bg-gray-800 dark:border-gray-700">
+      <article class="p-6 bg-white rounded-lg border border-gray-200 shadow-md hover:scale-105 transition-all duration-500 dark:bg-gray-800 dark:border-gray-700">
         <div class="flex justify-between items-center mb-5 text-gray-500">
           <span class="bg-primary-100 text-primary-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-primary-200 dark:text-primary-800">
             <a href="{{ route('blog.category',$post->category->name) }}">{{ $post->category->name }}</a>
@@ -30,7 +30,7 @@
         <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
           <a href="{{ route('blog.full' , $post->slug) }}">{{ $post['tittle'] }}</a>
         </h2>
-        <p class="mb-5 font-light text-gray-500 dark:text-gray-400">{{ Str::limit($post['body'], 100) }}</p>
+        <p class="mb-5 font-light text-gray-500 dark:text-gray-400">{{ Str::limit($post['body'], 200) }}</p>
         <div class="flex justify-between items-center">
           <div class="flex items-center space-x-4">
             <img class="w-7 h-7 rounded-full" src="{{ asset('img/user.png') }}" alt="Bonnie Green avatar" />

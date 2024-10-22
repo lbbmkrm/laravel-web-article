@@ -29,7 +29,7 @@ class BlogController extends Controller
         $post = Post::where('slug', $slug)->firstOrFail();
         return view('post', [
             'web' => [
-                'tittle' => 'Welcome to Blog',
+                'title' => 'Welcome to Blog',
                 'content' => 'Halaman Blog',
                 'urlName' => 'Blog'
             ],
@@ -42,7 +42,7 @@ class BlogController extends Controller
 
         return view('blog', [
             'web' => [
-                'tittle' => "Blog in $category->name",
+                'title' => "Blog in $category->name",
                 'content' => 'Halaman Blog',
                 'urlName' => 'Categories'
             ],
@@ -54,7 +54,7 @@ class BlogController extends Controller
     {
         return view('blog', [
             'web' => [
-                'tittle' => 'Articles by ' . $user->name,
+                'title' => 'Articles by ' . $user->name,
                 'content' => 'Halaman Blog',
                 'urlName' => 'Author'
             ],
